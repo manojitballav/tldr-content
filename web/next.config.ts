@@ -19,8 +19,8 @@ const nextConfig: NextConfig = {
     ],
   },
 
-  // Base path for GitHub Pages (update if using custom domain)
-  // basePath: '/tldr-content',
+  // Base path for GitHub Pages project pages
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
 
   // Trailing slash for static hosting
   trailingSlash: true,
