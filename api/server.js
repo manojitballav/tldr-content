@@ -20,9 +20,12 @@ app.use(cors({
     'http://localhost:3000',
     'http://localhost:5173',
     'https://content.lumiolabs.in',
-    /\.github\.io$/
+    'https://manojitballav.github.io',
+    'https://manojitballav.com',
+    /\.github\.io$/,
+    /\.lumiolabs\.in$/
   ],
-  methods: ['GET'],
+  methods: ['GET', 'OPTIONS'],
   optionsSuccessStatus: 200
 }));
 app.use(express.json());
