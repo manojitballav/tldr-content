@@ -1,0 +1,32 @@
+steps:
+  # Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'asia-south1-docker.pkg.dev/tldr-music/cloud-run-source-deploy/content-api:latest', '.']
+
+  # Push the container image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'asia-south1-docker.pkg.dev/tldr-music/cloud-run-source-deploy/content-api:latest']
+
+  # Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'content-api'
+      - '--image'
+      - 'asia-south1-docker.pkg.dev/tldr-music/cloud-run-source-deploy/content-api:latest'
+      - '--region'
+      - 'asia-south1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--port'
+      - '8080'
+      - '--memory'
+      - '512Mi'
+      - '--set-env-vars'
+      - 'MONGO_URI=mongodb://content_user:TLDRContent2026@34.180.14.185:27017/content_db?authSource=content_db'
+
+images:
+  - 'asia-south1-docker.pkg.dev/tldr-music/cloud-run-source-deploy/content-api:latest'

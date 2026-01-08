@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+web/out/
+web/.next/
+api/node_modules/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Database backups (too large for git)
+db_backup/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Test coverage
+coverage/
+
+# Misc
+*.tsbuildinfo
